@@ -1,0 +1,6 @@
+name = "ai-proxy-relay"
+main = "index.js"
+compatibility_date = "2024-09-01"
+
+[vars]
+HEALTH_HOSTS = "httpbin.org,api.httpbin.org,www.google.com"
