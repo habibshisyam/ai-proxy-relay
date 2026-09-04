@@ -3,25 +3,27 @@
 Multi-cloud stateless reverse proxy untuk pool proxy 9Router / VansRouter.
 
 ## Struktur Direktori
-- `cloudflare/`: Deploy ke Cloudflare Workers
+- `api/relay.js`: Vercel Edge Function (root-level agar Vercel auto-detect)
+- `vercel.json`: Vercel rewrites config
+- `cloudflare/`: Cloudflare Workers
   - `index.js`: Worker script
   - `wrangler.toml`: Konfigurasi Wrangler
-- `vercel/`: Deploy ke Vercel Edge
-  - `api/relay.js`: Edge Function
-  - `vercel.json`: URL rewrites
 
 ## Cara Deploy
 
-### 1. Cloudflare Workers
+### 1. Vercel (Auto-deploy via GitHub)
+Repo di-import ke Vercel dengan **Root Directory default (`.`)**.
+Setiap push ke `main` otomatis deploy.
+
+Manual CLI:
+```bash
+npx vercel --prod
+```
+
+### 2. Cloudflare Workers
 ```bash
 cd cloudflare
 npx wrangler deploy
-```
-
-### 2. Vercel Edge
-```bash
-cd vercel
-npx vercel --prod
 ```
 
 ## Format URL di 9Router / VansRouter
